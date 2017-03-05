@@ -1,6 +1,11 @@
 1.png
-CarND-Vehicle-Detection.ipynb.v*
+CarND-Vehicle-Detection.v*.ipynb
 non-vehicles
 vehicles
 .ipynb_checkpoints
 .DS_Store
+project_video_output_*
+project_video.mp4
+project_video_1.mp4
+*png
+*jpg
