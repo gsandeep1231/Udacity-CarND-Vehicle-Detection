@@ -78,8 +78,15 @@ xy_overlap = (0.75, 0.75)
 win_sizes = [64, 96, 112]
 y_start_stop makes sure we are only focussing on the road part of the image. I increased xy_overlap to 75% to make the heatmap more hot around our object of interest. And finally I selected different window sizes to consider the difference in car size when its near to camera than when it is far from it. These parameters led to overall 1603 search windows! Yes, the testing on the video was very slow because of this but the results look much better as compared to very few windows.
 
+![alt tag](./README_images/window_list.png)
+
 ####Test images
 As mentioned earlier, to improve the classifier, I switched to Random Forest instead of SVM with parameters (n_estimators=10, min_samples_leaf=2). Also properly selecting training and validation set was very important to get better results. Finally after combining spatial, color histogram and HOG features on test images and then running the classifier on it, I got below results on some test images:
+
+![alt tag](./README_images/test_output1.png)
+![alt tag](./README_images/test_output2.png)
+![alt tag](./README_images/test_output3.png)
+![alt tag](./README_images/test_output5.png)
 
 ###Video Implementation
 ####Video result
@@ -90,10 +97,20 @@ As mentioned in the lecture videos, I used heatmap to get rid of false positives
 
 Here's an example result showing the heatmap from a series of frames of video, the result of scipy.ndimage.measurements.label() and the bounding boxes then overlaid on the last frame of video:
 ####Here are eight frames and their corresponding heatmaps:
+![alt tag](./README_images/video_frame1.png)
+![alt tag](./README_images/video_frame2.png)
+![alt tag](./README_images/video_frame3.png)
+![alt tag](./README_images/video_frame4.png)
+![alt tag](./README_images/video_frame5.png)
+![alt tag](./README_images/video_frame6.png)
+![alt tag](./README_images/video_frame7.png)
+![alt tag](./README_images/video_frame8.png)
 
 ####Here is the output of scipy.ndimage.measurements.label() on the integrated heatmap from all eight frames:
+![alt tag](./README_images/video_frame8_label.png)
 
 ####Here is the resulting bounding boxes are drawn onto the last frame in the series:
+![alt tag](./README_images/video_frame8_final.png)
 
 ###Discussion
 Running the model on video file took a very long time. This will be the major improvement to do. Because when running the actual self driving model, we will be running it on live video stream and we cannot risk any delay in the output. It needs to be almost instantaneous. I will have to improve my feature selection and sliding window technique to reduce the run time a lot. 
