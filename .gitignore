@@ -8,4 +8,5 @@ project_video_output_*
 project_video.mp4
 project_video_1.mp4
 project_video_2.mp4
-test*
+test_video_frames
+test_images
