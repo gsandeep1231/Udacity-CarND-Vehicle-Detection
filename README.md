@@ -89,4 +89,12 @@ I have uploaded my final video, <b>project_video_output.mp4</b> to my git repo.
 As mentioned in the lecture videos, I used heatmap to get rid of false positives. I created a global variable that could store hot_windows (windows where cars appear) for the last 8 frames. It then combines these videos from previous 8 frames and generates a heat map. Since I am combining lot of previous frames, this gives less flickering results. I then thresholded that map to identify vehicle positions. I then used scipy.ndimage.measurements.label() to identify individual blobs in the heatmap. I then assumed each blob corresponded to a vehicle. I constructed bounding boxes to cover the area of each blob detected.
 
 Here's an example result showing the heatmap from a series of frames of video, the result of scipy.ndimage.measurements.label() and the bounding boxes then overlaid on the last frame of video:
+####Here are eight frames and their corresponding heatmaps:
 
+####Here is the output of scipy.ndimage.measurements.label() on the integrated heatmap from all eight frames:
+
+####Here is the resulting bounding boxes are drawn onto the last frame in the series:
+
+###Discussion
+Running the model on video file took a very long time. This will be the major improvement to do. Because when running the actual self driving model, we will be running it on live video stream and we cannot risk any delay in the output. It needs to be almost instantaneous. I will have to improve my feature selection and sliding window technique to reduce the run time a lot. 
+I also notice sometimes the pipeline recognizes notcar features in the video as car, this could be due to poor classifier, so I will need to improve my classifier further to increase accuracy, may be gather more training data too.
